@@ -12,7 +12,11 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 @PermitAll
 @Route(value = "", layout = MainLayout.class)
 @PageTitle("CRM | Company")
@@ -49,6 +53,7 @@ public class ListView extends VerticalLayout {
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> updateList());
+        addContactBtn.addClickListener(e -> addContact());
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactBtn);
         toolbar.addClassName("toolbar");
         return toolbar;
@@ -108,7 +113,5 @@ public class ListView extends VerticalLayout {
         grid.asSingleSelect().clear();
         editContact(new Contact());
     }
-
-
 
 }

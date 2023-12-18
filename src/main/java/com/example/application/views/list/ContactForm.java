@@ -15,7 +15,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.shared.Registration;
+
 import java.util.List;
 
 public class ContactForm extends FormLayout {
@@ -64,7 +64,7 @@ public class ContactForm extends FormLayout {
     }
 
     public static abstract class ContactFormEvent extends ComponentEvent<ContactForm> {
-        private Contact contact;
+        private final Contact contact;
 
         protected ContactFormEvent(ContactForm source, Contact contact) {
             super(source, false);
@@ -95,15 +95,15 @@ public class ContactForm extends FormLayout {
         }
     }
 
-    public Registration addDeleteListener(ComponentEventListener<DeleteEvent> listener) {
-        return addListener(DeleteEvent.class, listener);
+    public void addDeleteListener(ComponentEventListener<DeleteEvent> listener) {
+        addListener(DeleteEvent.class, listener);
     }
 
-    public Registration addSaveListener(ComponentEventListener<SaveEvent> listener) {
-        return addListener(SaveEvent.class, listener);
+    public void addSaveListener(ComponentEventListener<SaveEvent> listener) {
+        addListener(SaveEvent.class, listener);
     }
-    public Registration addCloseListener(ComponentEventListener<CloseEvent> listener) {
-        return addListener(CloseEvent.class, listener);
+    public void addCloseListener(ComponentEventListener<CloseEvent> listener) {
+        addListener(CloseEvent.class, listener);
     }
 }
 

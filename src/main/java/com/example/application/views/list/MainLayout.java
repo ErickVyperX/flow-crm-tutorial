@@ -26,6 +26,7 @@ public class MainLayout extends AppLayout {
         logo.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.MEDIUM);
         String u = securityService.getAuthenticatedUser().getUsername();
         Button logout = new Button("Log out " + u, e -> securityService.logout());
+        logout.addClassName(LumoUtility.Margin.Right.MEDIUM);
         var header = new HorizontalLayout(new DrawerToggle(), logo, logout);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.expand(logo);
